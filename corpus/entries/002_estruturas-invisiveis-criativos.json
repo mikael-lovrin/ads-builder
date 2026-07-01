@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "file": "COPY PROMPTS.docx",
+  "slug": "002_estruturas-invisiveis-criativos",
+  "processed_at": "2026-06-30",
+  "metadata": {
+    "type": "structure_pattern",
+    "author": "Mikael Lovrin (compilação de prompts próprios)",
+    "year": 2026,
+    "source": "user-created",
+    "title": "Biblioteca de Estruturas Invisíveis de Criativos",
+    "post_url": null,
+    "word_count": 380
+  },
+  "classification": {
+    "hook": {"archetype": null, "archetype_variant": null, "psychological_trigger": null, "template_extracted": null},
+    "ad_type": {"primary": "video_script", "secondary": null},
+    "emotion": {"dominant": "esperanca", "secondary": "curiosidade"},
+    "structure_or_style": {"id": "logica_dopamina, jornada_redencao, prova_visual", "context": "video"},
+    "platform": ["meta_feed", "reels", "tiktok"],
+    "niches": ["saude_emagrecimento"],
+    "editor_format": null
+  },
+  "intelligence": {
+    "unique_mechanism": "3 estruturas de ritmo/sequenciamento (não de conteúdo) para organizar a ordem de revelação dentro de um roteiro: Lógica da Dopamina (retenção), Jornada da Redenção (conversão), Prova Visual (resultado rápido).",
+    "villain": null,
+    "hero_character": null,
+    "most_teachable_moment": {
+      "quote": "Aqui o processo destrói a epicatequina. Na Suíça, ativa GLP-1 e GIP.",
+      "principle": "O 'Mecanismo Único' (passo 3 da Jornada da Redenção) funciona melhor quando reformula a causa do problema como um detalhe de processo/mecanismo, não o ingrediente/comportamento óbvio em si — desloca a culpa do avatar para algo técnico e invisível."
+    },
+    "niche_agnostic_insight": "As 3 estruturas descrevem ritmo de revelação de informação (rápido vs. ceticismo-primeiro vs. prova-primeiro), o que é transferível para qualquer formato de vídeo de venda, não só saúde.",
+    "extrapolations": [
+      {"niche": "financas", "application": "jornada_redencao: validar ceticismo sobre investir → paradoxo (outros países/pessoas fazem diferente) → mecanismo único (como o ativo realmente funciona) → solução acessível → escassez"},
+      {"niche": "beleza", "application": "prova_visual: afirmação de resultado (pele em N dias) → prova social/médica → facilidade → passo a passo → garantia"}
+    ]
+  },
+  "kb_contribution": {
+    "new_archetype_proposed": null,
+    "new_technique_proposed": null,
+    "existing_archetype_expanded": "knowledge/structure-library.md — fonte primária das 3 estruturas invisíveis de vídeo",
+    "quality_flag": "high",
+    "quality_reason": "Estruturas testadas em campanhas reais pelo usuário, validadas para retenção e conversão antes de entrarem na KB."
+  }
+}

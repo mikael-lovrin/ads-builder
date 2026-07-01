@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "file": "COPY PROMPTS.docx",
+  "slug": "003_roteirizador-elite-8-blocos",
+  "processed_at": "2026-06-30",
+  "metadata": {
+    "type": "structure_pattern",
+    "author": "Mikael Lovrin (compilação de prompts próprios)",
+    "year": 2026,
+    "source": "user-created",
+    "title": "Roteirizador de Elite — Estrutura Obrigatória de 8 Blocos",
+    "post_url": null,
+    "word_count": 650
+  },
+  "classification": {
+    "hook": {"archetype": null, "archetype_variant": null, "psychological_trigger": null, "template_extracted": null},
+    "ad_type": {"primary": "video_script", "secondary": null},
+    "emotion": {"dominant": "esperanca", "secondary": "culpa_absolvida"},
+    "structure_or_style": {"id": "estrutura_8_blocos", "context": "video"},
+    "platform": ["meta_feed", "reels", "tiktok"],
+    "niches": ["saude_emagrecimento", "saude_feminina"],
+    "editor_format": null
+  },
+  "intelligence": {
+    "unique_mechanism": "Estrutura fixa de 8 blocos (Gancho Multi-Angular, Delimitação, Sanduíche de Valor, PAS+Viés Financeiro, Absolvição, Storytelling Micro, Empilhamento de Benefícios, CTA Triplo White/Gray/Black) que funciona como esqueleto para qualquer roteiro de vídeo de DR, independente do nicho ou ângulo escolhido.",
+    "villain": "A indústria/biologia/hormônios — varia por nicho, mas o bloco de Absolvição exige sempre um vilão externo nomeado.",
+    "hero_character": "O narrador UGC ou a figura de autoridade do produto, dependendo do briefing.",
+    "most_teachable_moment": {
+      "quote": "A culpa não é sua, é do sistema que lucra com sua doença.",
+      "principle": "O bloco de Absolvição é o passo mais comumente esquecido em roteiros de DR amadores e o que mais constrói confiança — ele precisa de um vilão externo específico (não vago) para funcionar."
+    },
+    "niche_agnostic_insight": "A sequência PAS + Absolvição + Storytelling Micro + Empilhamento + CTA Triplo é transferível para qualquer categoria de produto que venda transformação pessoal (saúde, finanças, relacionamento, produtividade).",
+    "extrapolations": [
+      {"niche": "financas", "application": "Absolvição: 'a culpa não é sua por não ter ficado rico, é do sistema bancário que te ensinou a poupar errado'"},
+      {"niche": "produtividade", "application": "Sanduíche de Valor: dica genérica (gerenciar energia, não tempo) → produto como atalho para aplicar isso sem esforço"}
+    ]
+  },
+  "kb_contribution": {
+    "new_archetype_proposed": null,
+    "new_technique_proposed": "cta_triplo_white_gray_black",
+    "existing_archetype_expanded": "knowledge/structure-library.md — fonte primária da estrutura de 8 blocos e do CTA Triplo",
+    "quality_flag": "high",
+    "quality_reason": "Estrutura usada como padrão obrigatório em todos os roteiros do usuário ao longo de meses, com iteração e refinamento documentados no próprio docx (variações A/B/C/D testadas para o bloco 1)."
+  }
+}

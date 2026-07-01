@@ -1,0 +1,20 @@
+{
+  "sessions": [
+    {
+      "date": "2026-06-30",
+      "session_number": 1,
+      "files_processed": ["COPY PROMPTS.docx"],
+      "entries_added": 6,
+      "kb_updates": [
+        {"file": "knowledge/hook-taxonomy.md", "type": "initial_seed", "name": "10 arquétipos de gancho", "source_files": ["corpus/entries/001_biblioteca-ganchos-choco-burn.json"]},
+        {"file": "knowledge/structure-library.md", "type": "initial_seed", "name": "8 blocos + 3 estruturas invisíveis + CTA triplo", "source_files": ["corpus/entries/002_estruturas-invisiveis-criativos.json", "corpus/entries/003_roteirizador-elite-8-blocos.json"]},
+        {"file": "knowledge/static-image-psychology.md", "type": "initial_seed", "name": "10 princípios + 5 estilos visuais + estrutura de copy de 8 partes", "source_files": ["corpus/entries/004_master-prompt-image-ads.json"]},
+        {"file": "knowledge/editor-formats.md", "type": "initial_seed", "name": "4 formatos de execução fixos", "source_files": ["corpus/entries/005_formatos-execucao-editor.json"]},
+        {"file": "skills/creative-pattern-analysis/SKILL.md", "type": "initial_seed", "name": "framework de engenharia reversa de 11 dimensões", "source_files": ["corpus/entries/006_engenharia-reversa-estrutura-invisivel.json"]}
+      ],
+      "new_archetypes_proposed": [],
+      "pending_review": [],
+      "notes": "Sessão fundacional — corpus inicializado a partir de COPY PROMPTS.docx (compilação própria do usuário, ~9 meses de prompts validados em campanhas reais). Exemplos de produto específico (Gelatin Burn, PeriBalance) descartados deliberadamente — só os frameworks niche-agnostic entraram no corpus/knowledge."
+    }
+  ]
+}

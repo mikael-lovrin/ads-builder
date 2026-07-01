@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "file": "COPY PROMPTS.docx",
+  "slug": "005_formatos-execucao-editor",
+  "processed_at": "2026-06-30",
+  "metadata": {
+    "type": "structure_pattern",
+    "author": "Mikael Lovrin (compilação de prompts próprios)",
+    "year": 2026,
+    "source": "user-created",
+    "title": "Formatos de Execução/Edição para Teste de Ganchos",
+    "post_url": null,
+    "word_count": 260
+  },
+  "classification": {
+    "hook": {"archetype": null, "archetype_variant": null, "psychological_trigger": "curiosidade", "template_extracted": null},
+    "ad_type": {"primary": "video_script", "secondary": null},
+    "emotion": {"dominant": "curiosidade", "secondary": null},
+    "structure_or_style": {"id": null, "context": "video"},
+    "platform": ["reels", "tiktok", "stories"],
+    "niches": ["saude_emagrecimento"],
+    "editor_format": "cinematografico, caixinha_perguntas, twitter_screenshot, ranking"
+  },
+  "intelligence": {
+    "unique_mechanism": "4 formatos fixos de execução visual/edição (independentes do gancho psicológico): tela preta cinematográfica com lettering, caixinha de perguntas UGC, print de tweet de autoridade, ranking numerado.",
+    "villain": null,
+    "hero_character": null,
+    "most_teachable_moment": {
+      "quote": "o outro vai ser tbm tela preta em formato horizontal o o video mas logo acima vai ter o user to twitter com uma legenda, como se fosse um infleuncer com credibilidade compartilhando algo no twitter",
+      "principle": "Formato de execução (como o vídeo é filmado/editado) é uma variável independente do gatilho psicológico do gancho — o mesmo gancho de conspiração pode ser executado como twitter_screenshot ou como UGC normal, e isso é testável separadamente."
+    },
+    "niche_agnostic_insight": "Formatos de execução (disfarce de conteúdo nativo) são reutilizáveis em qualquer nicho de DR em vídeo — a diferença entre um anúncio reconhecido como anúncio e um que se disfarça de conteúdo orgânico está na execução, não no copy.",
+    "extrapolations": [
+      {"niche": "financas", "application": "twitter_screenshot: print de tweet de um analista financeiro compartilhando um dado de mercado, antes de revelar o produto"},
+      {"niche": "relacionamento", "application": "caixinha_perguntas: UGC respondendo pergunta tipo 'como saber se ele(a) gosta de mim de verdade?'"}
+    ]
+  },
+  "kb_contribution": {
+    "new_archetype_proposed": null,
+    "new_technique_proposed": null,
+    "existing_archetype_expanded": "knowledge/editor-formats.md — fonte primária dos 4 formatos fixos + mapa gancho→formato",
+    "quality_flag": "medium",
+    "quality_reason": "Formatos descritos pelo usuário como testes a rodar, ainda sem resultado de performance documentado — tratar como hipótese validada conceitualmente, não como dado de conversão."
+  }
+}

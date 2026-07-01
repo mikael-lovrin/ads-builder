@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "file": "COPY PROMPTS.docx",
+  "slug": "006_engenharia-reversa-estrutura-invisivel",
+  "processed_at": "2026-06-30",
+  "metadata": {
+    "type": "bestpractice",
+    "author": "Mikael Lovrin (compilação de prompts próprios)",
+    "year": 2026,
+    "source": "user-created",
+    "title": "Estrutura Invisível — Framework de Engenharia Reversa de Criativos de Referência",
+    "post_url": null,
+    "word_count": 520
+  },
+  "classification": {
+    "hook": {"archetype": null, "archetype_variant": null, "psychological_trigger": null, "template_extracted": null},
+    "ad_type": {"primary": "video_script", "secondary": "static_image"},
+    "emotion": {"dominant": null, "secondary": null},
+    "structure_or_style": {"id": null, "context": "analysis"},
+    "platform": ["meta_feed", "reels", "tiktok"],
+    "niches": ["saude_emagrecimento"],
+    "editor_format": null
+  },
+  "intelligence": {
+    "unique_mechanism": "Framework de análise (não de construção) para decompor um criativo de referência em 11 dimensões: ângulo de venda, disfarce, identificação/espelhamento, transição para o conteúdo, virada de chave, apresentação do mecanismo, natureza da oferta, sequenciamento de blocos, diferencial emocional/lógico, nível de exposição do produto, lógica da descoberta, CTA disfarçado.",
+    "villain": null,
+    "hero_character": "O 'Diretor de Criação de Performance' — persona usada no prompt original para conduzir a análise de forma clínica, sem resumir a história, só descrevendo a função de cada bloco.",
+    "most_teachable_moment": {
+      "quote": "Não resuma a história; descreva a função de cada bloco.",
+      "principle": "A regra central da lateralização: o objetivo de analisar um criativo de referência não é replicar a história, é extrair o DNA estrutural (sequência de blocos + função de cada um) para reescrever com um ângulo/história novos."
+    },
+    "niche_agnostic_insight": "As 11 dimensões de análise (especialmente 'disfarce do anúncio' e 'nível de exposição do produto') são aplicáveis a qualquer criativo de DR em qualquer nicho — definem o quanto um anúncio se disfarça de conteúdo orgânico vs. se assume como anúncio.",
+    "extrapolations": [
+      {"niche": "financas", "application": "Lógica da Descoberta: 'um ex-trader que descobriu por acidente um padrão que os bancos não querem que você saiba'"},
+      {"niche": "educacao", "application": "Natureza da Oferta Implícita: o curso aparece como 'ferramenta' dentro de uma história de virada de carreira, não como protagonista"}
+    ]
+  },
+  "kb_contribution": {
+    "new_archetype_proposed": null,
+    "new_technique_proposed": "engenharia_reversa_11_dimensoes",
+    "existing_archetype_expanded": "skills/creative-pattern-analysis/SKILL.md — fonte primária do pipeline de análise para o Modo Lateralização",
+    "quality_flag": "high",
+    "quality_reason": "Framework de análise estruturado e testado pelo usuário para preparar reuniões de revisão de criativos escalados em agência — já usado em contexto profissional real."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "file": "COPY PROMPTS.docx",
+  "slug": "001_biblioteca-ganchos-choco-burn",
+  "processed_at": "2026-06-30",
+  "metadata": {
+    "type": "hook_pattern",
+    "author": "Mikael Lovrin (compilação de prompts próprios)",
+    "year": 2026,
+    "source": "user-created",
+    "title": "Biblioteca de Ganchos — Choco Burn",
+    "post_url": null,
+    "word_count": 420
+  },
+  "classification": {
+    "hook": {
+      "archetype": "aviso_reverso, conspiracao_revelada, injustica_comparativa, transformacao_visual_especifica",
+      "archetype_variant": null,
+      "psychological_trigger": "curiosidade, raiva_externa, identificacao, praticidade",
+      "template_extracted": "4 fórmulas niche-agnostic de gancho — ver knowledge/hook-taxonomy.md para os templates completos"
+    },
+    "ad_type": {"primary": "video_script", "secondary": "static_image"},
+    "emotion": {"dominant": "curiosidade", "secondary": "raiva"},
+    "structure_or_style": {"id": null, "context": "video"},
+    "platform": ["meta_feed", "reels", "tiktok"],
+    "niches": ["saude_emagrecimento"],
+    "editor_format": null
+  },
+  "intelligence": {
+    "unique_mechanism": "Não é um mecanismo de produto — é um conjunto de 4 fórmulas de abertura validadas pelo usuário, originalmente instanciadas com um produto de teste (gelatina para emagrecimento), generalizadas para qualquer nicho.",
+    "villain": null,
+    "hero_character": null,
+    "most_teachable_moment": {
+      "quote": "Não misture chocolate com esses 3 ingredientes se você não quiser ver suas calças caindo em 15 dias.",
+      "principle": "O arquétipo aviso_reverso funciona porque o comando negativo + consequência positiva disfarçada de ameaça cria confusão cognitiva que o espectador só resolve continuando a assistir."
+    },
+    "niche_agnostic_insight": "As 4 fórmulas (aviso_reverso, conspiracao_revelada, injustica_comparativa, transformacao_visual_especifica) são templates de estrutura gramatical do gancho, não de conteúdo — qualquer nicho pode preencher as variáveis.",
+    "extrapolations": [
+      {"niche": "financas", "application": "aviso_reverso: 'Não invista nesses 3 ativos se você não quiser triplicar seu patrimônio em 2 anos'"},
+      {"niche": "relacionamento", "application": "injustica_comparativa: 'Por que sua amiga recebe bom-dia todo dia e você nem mensagem recebe? O segredo está em 3 comportamentos que vocês têm DESLIGADOS'"}
+    ]
+  },
+  "kb_contribution": {
+    "new_archetype_proposed": null,
+    "new_technique_proposed": null,
+    "existing_archetype_expanded": "knowledge/hook-taxonomy.md — fonte primária dos 4 arquétipos centrais da taxonomia",
+    "quality_flag": "high",
+    "quality_reason": "Material validado pelo próprio usuário ao longo de meses de uso prático em campanhas reais de saúde/emagrecimento."
+  }
+}

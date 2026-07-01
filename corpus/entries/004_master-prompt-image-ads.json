@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "file": "COPY PROMPTS.docx",
+  "slug": "004_master-prompt-image-ads",
+  "processed_at": "2026-06-30",
+  "metadata": {
+    "type": "bestpractice",
+    "author": "Mikael Lovrin (compilação própria, citando Kahneman, Ogilvy, Cialdini, Whitman, Berger, Nielsen, Meta Creative Research)",
+    "year": 2026,
+    "source": "user-created",
+    "title": "Master Prompt — Image Ads Creative Brief Generator (v2, VSL-First Workflow)",
+    "post_url": null,
+    "word_count": 1800
+  },
+  "classification": {
+    "hook": {"archetype": null, "archetype_variant": null, "psychological_trigger": "autoridade_confiada", "template_extracted": null},
+    "ad_type": {"primary": "static_image", "secondary": null},
+    "emotion": {"dominant": "vergonha", "secondary": "esperanca"},
+    "structure_or_style": {"id": "realistic_photography, documentary_raw, editorial_illustration, cartoon, infographic", "context": "image"},
+    "platform": ["meta_feed", "pinterest"],
+    "niches": ["saude_emagrecimento", "saude_feminina", "beleza_skincare"],
+    "editor_format": null
+  },
+  "intelligence": {
+    "unique_mechanism": "Framework completo de geração de brief de imagem estática: extração de dados do VSL/briefing → seção de pesquisa de psicologia aplicada ao avatar específico → 2 corpos x 5 estilos visuais fixos = 10 image ads, cada um com prompt de imagem + hook + body copy de 8 partes → production notes.",
+    "villain": "Varia por produto — extraído do VSL/briefing, nunca genérico (regra explícita: 'big pharma' vago não converte, precisa ser específico e checável).",
+    "hero_character": "A figura de autoridade do produto (médico, fundador, especialista) em primeira pessoa no Corpo 1; o avatar descobrindo algo escondido no Corpo 2.",
+    "most_teachable_moment": {
+      "quote": "A imagem não vende o produto. A imagem vende o CLIQUE. Seu único trabalho é fazer o espectador sentir algo não resolvido que o body copy precisa responder.",
+      "principle": "Separação clara de responsabilidade entre imagem (gerar tensão/scroll-stop) e copy (resolver a tensão) — a falha mais comum em briefs de imagem amadores é tentar vender o produto na própria imagem."
+    },
+    "niche_agnostic_insight": "Os 10 princípios de conversão (3-Second Rule, Emotional Valence, Tension Architecture, Faces/Mirror Neurons, Color Psychology, Specificity=Credibility, Pattern Interrupt, Text-on-Image Rules, Image Style Performance) são pesquisa de comportamento do consumidor, não específicos de nicho — aplicam-se a qualquer categoria de produto vendido via imagem estática em redes sociais.",
+    "extrapolations": [
+      {"niche": "financas", "application": "documentary_raw: foto crua de alguém olhando extrato bancário numa cozinha real, não banco de imagens de terno"},
+      {"niche": "educacao", "application": "infographic: 3-4 seções mostrando a lacuna entre o que escolas ensinam e o que o mercado exige, com 2 números específicos"}
+    ]
+  },
+  "kb_contribution": {
+    "new_archetype_proposed": null,
+    "new_technique_proposed": "5_estilos_visuais_fixos",
+    "existing_archetype_expanded": "knowledge/static-image-psychology.md — fonte primária integral (10 princípios, 5 estilos, estrutura de copy de 8 partes, regras de prompt de imagem)",
+    "quality_flag": "high",
+    "quality_reason": "Framework com citação explícita de fontes acadêmicas/de mercado reconhecidas (Kahneman, Ogilvy, Cialdini, Whitman, Berger, Nielsen, Meta Creative Research) e regras operacionais testadas pelo usuário."
+  }
+}
