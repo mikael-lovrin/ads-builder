@@ -1,30 +1,33 @@
 """
 generate_images.py
 Gera imagens via API da OpenAI (gpt-image-1) a partir dos briefs escritos pelo
-ads-builder. Ver skills/ads-builder/prompts/fase3c-geracao-imagem.md para o
-protocolo completo (quando rodar, como escolher o que gerar, como registrar).
+ads-builder. Ver ../prompts/fase3c-geracao-imagem.md para o protocolo completo
+(quando rodar, como escolher o que gerar, como registrar).
+
+Roda sempre a partir da pasta do projeto/marca atual (onde o Claude Code foi
+aberto e onde vivem briefing-imagem.md, brand/ e output/imagens/).
 
 Dois modos:
 
-  dr      — gera 1+ dos 10 image ads de projects/[marca]/briefing-imagem.md,
-            texto puro (images.generate), SEM anexar assets de marca. É o modo
-            default: a regra 8 do prompt (knowledge/static-image-psychology.md)
-            proíbe logo/produto no frame desses criativos de propósito — é o
-            que faz a imagem parecer nativa e parar o scroll.
+  dr      — gera 1+ dos 10 image ads de ./briefing-imagem.md, texto puro
+            (images.generate), SEM anexar assets de marca. É o modo default:
+            a regra 8 do prompt (knowledge/static-image-psychology.md) proíbe
+            logo/produto no frame desses criativos de propósito — é o que faz
+            a imagem parecer nativa e parar o scroll.
 
   mockup  — gera uma imagem pontual com prompt livre, anexando os assets de
-            projects/[marca]/brand/ (logo, paleta, fotos de produto/mockup)
-            como referência via images.edit. Para criativos de produto/branded,
-            fora da lógica "black hat" do briefing-imagem.md.
+            ./brand/ (logo, paleta, fotos de produto/mockup) como referência
+            via images.edit. Para criativos de produto/branded, fora da
+            lógica "black hat" do briefing-imagem.md.
 
-Requer OPENAI_API_KEY no ambiente (ou em .env na raiz do projeto).
+Requer OPENAI_API_KEY no ambiente (ou em .env na pasta do projeto atual).
 
-Uso:
-  python scripts/generate_images.py dr --marca acme --corpo 1 --estilo realistic_photography
-  python scripts/generate_images.py dr --marca acme --corpo all --estilo all
-  python scripts/generate_images.py mockup --marca acme --prompt "produto em cima de bancada de mármore, luz natural" --ref brand/logo.png brand/produto.png
+Uso (dentro da pasta do projeto/marca):
+  python scripts/generate_images.py dr --corpo 1 --estilo realistic_photography
+  python scripts/generate_images.py dr --corpo all --estilo all
+  python scripts/generate_images.py mockup --prompt "produto em cima de bancada de mármore, luz natural" --ref brand/logo.png brand/produto.png
 
-Saída: projects/[marca]/output/imagens/*.png + manifest.json (histórico de gerações).
+Saída: output/imagens/*.png + manifest.json (histórico de gerações).
 """
 
 import argparse
@@ -37,8 +40,7 @@ from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-BASE_DIR = Path(__file__).parent.parent
-PROJECTS_DIR = BASE_DIR / "projects"
+BASE_DIR = Path.cwd()
 
 STYLE_ORDER = [
     "realistic_photography",
@@ -61,7 +63,7 @@ def load_api_key() -> str:
         for line in env_file.read_text(encoding="utf-8").splitlines():
             if line.strip().startswith("OPENAI_API_KEY"):
                 return line.split("=", 1)[1].strip().strip('"').strip("'")
-    print("ERRO: OPENAI_API_KEY não encontrada no ambiente nem em .env na raiz do projeto.")
+    print("ERRO: OPENAI_API_KEY não encontrada no ambiente nem em .env na pasta do projeto.")
     print("Crie um .env (copie de .env.example) com sua chave, ou exporte a variável de ambiente.")
     sys.exit(1)
 
@@ -87,8 +89,8 @@ FIELD_RE = re.compile(
 )
 
 
-def parse_briefing(marca: str) -> dict:
-    path = PROJECTS_DIR / marca / "briefing-imagem.md"
+def parse_briefing() -> dict:
+    path = BASE_DIR / "briefing-imagem.md"
     if not path.exists():
         print(f"ERRO: {path} não existe. Rode a Fase 3b primeiro.")
         sys.exit(1)
@@ -143,18 +145,18 @@ def update_manifest(out_dir: Path, entry: dict):
 
 
 def run_dr(args):
-    entries = parse_briefing(args.marca)
+    entries = parse_briefing()
     selected = select_entries(entries, args.corpo, args.estilo)
     if not selected:
         print("Nada para gerar.")
         return
 
-    out_dir = PROJECTS_DIR / args.marca / "output" / "imagens"
+    out_dir = BASE_DIR / "output" / "imagens"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     client = get_client()
 
-    print(f"Gerando {len(selected)} imagem(ns) para '{args.marca}' (modo dr, sem assets de marca)...\n")
+    print(f"Gerando {len(selected)} imagem(ns) (modo dr, sem assets de marca)...\n")
     for corpo, estilo, prompt in selected:
         stem = f"corpo{corpo}-{estilo}"
         version = next_version(out_dir, stem)
@@ -184,8 +186,7 @@ def run_dr(args):
 
 
 def run_mockup(args):
-    marca_dir = PROJECTS_DIR / args.marca
-    out_dir = marca_dir / "output" / "imagens"
+    out_dir = BASE_DIR / "output" / "imagens"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     ref_paths = []
@@ -193,13 +194,13 @@ def run_mockup(args):
         for r in args.ref:
             p = Path(r)
             if not p.is_absolute():
-                p = marca_dir / r
+                p = BASE_DIR / r
             if not p.exists():
                 print(f"AVISO: referência não encontrada: {p} — pulando.")
                 continue
             ref_paths.append(p)
     else:
-        brand_dir = marca_dir / "brand"
+        brand_dir = BASE_DIR / "brand"
         if brand_dir.exists():
             ref_paths = [
                 p for p in brand_dir.iterdir()
@@ -207,7 +208,7 @@ def run_mockup(args):
             ]
 
     if not ref_paths:
-        print(f"AVISO: nenhum asset de marca encontrado (nem --ref, nem {marca_dir / 'brand'}).")
+        print(f"AVISO: nenhum asset de marca encontrado (nem --ref, nem {BASE_DIR / 'brand'}).")
         print("Gerando sem referência (equivalente a images.generate).")
 
     client = get_client()
@@ -246,7 +247,7 @@ def run_mockup(args):
         "file": filename,
         "mode": "mockup",
         "prompt": args.prompt,
-        "refs": [str(p.relative_to(marca_dir)) if p.is_relative_to(marca_dir) else str(p) for p in ref_paths],
+        "refs": [str(p.relative_to(BASE_DIR)) if p.is_relative_to(BASE_DIR) else str(p) for p in ref_paths],
         "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
     })
 
@@ -254,20 +255,18 @@ def run_mockup(args):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Gera imagens via OpenAI para o ads-builder.")
+    parser = argparse.ArgumentParser(description="Gera imagens via OpenAI para o ads-builder (roda na pasta do projeto atual).")
     sub = parser.add_subparsers(dest="mode", required=True)
 
     p_dr = sub.add_parser("dr", help="Gera image ads do briefing-imagem.md (sem assets de marca).")
-    p_dr.add_argument("--marca", required=True)
     p_dr.add_argument("--corpo", default="all", help="1, 2 ou all (default: all)")
     p_dr.add_argument("--estilo", default="all", help="ID do estilo ou all (default: all)")
     p_dr.add_argument("--quality", default="high", choices=["low", "medium", "high", "auto"])
     p_dr.set_defaults(func=run_dr)
 
     p_mock = sub.add_parser("mockup", help="Gera criativo pontual com assets de marca (logo/mockup).")
-    p_mock.add_argument("--marca", required=True)
     p_mock.add_argument("--prompt", required=True)
-    p_mock.add_argument("--ref", nargs="*", help="Paths de imagens de referência (default: projects/[marca]/brand/*)")
+    p_mock.add_argument("--ref", nargs="*", help="Paths de imagens de referência (default: ./brand/*)")
     p_mock.add_argument("--name", help="Prefixo do arquivo de saída (default: mockup)")
     p_mock.add_argument("--quality", default="high", choices=["low", "medium", "high", "auto"])
     p_mock.set_defaults(func=run_mockup)

@@ -43,7 +43,7 @@ Você é o motor de análise estrutural de criativos de Direct Response — espe
 Para cada criativo, decomponha nas 11 dimensões abaixo. Seja clínico — bullet points, sem floreio:
 
 1. **Ângulo de Venda (Tipo de Criativo)**: `Direto ao Ponto` (foca no produto desde o início) | `Truque/Hack` (esconde o produto, foca em ritual/hábito) | `Storytelling/Virada de Chave` (jornada emocional de descoberta acidental)
-2. **Disfarce**: o criativo se apresenta como conteúdo nativo, notícia, ou depoimento? (ver `knowledge/editor-formats.md` para os formatos de execução equivalentes)
+2. **Disfarce**: o criativo se apresenta como conteúdo nativo, notícia, ou depoimento? (ver `../ads-builder/knowledge/editor-formats.md` para os formatos de execução equivalentes)
 3. **Identificação/Espelhamento**: como o criativo faz o espectador dizer "isso é para mim"?
 4. **Transição para o Conteúdo**: como prende a atenção depois do gancho sem parecer anúncio?
 5. **A Virada de Chave ("Aha!")**: em que ponto a lógica comum é quebrada e uma "nova verdade" é apresentada?
@@ -77,14 +77,14 @@ O que é fraco, arriscado ou específico demais do criativo original para ser re
 Liste explicitamente o que muda no criativo novo: a história/anedota, o ângulo de venda específico, o gancho verbal exato, o nome do mecanismo, o "vilão" nomeado, a figura de autoridade. Isso é o que garante que o resultado final é uma ideia lateral, não um clone.
 
 #### 3.4 — Hipóteses Testáveis (5-10)
-Cada uma com: variável testada, por que pode funcionar (evidência do lote), como testar (controle vs. variação) — formato compatível com `skills/ads-builder/prompts/combinacoes.md`.
+Cada uma com: variável testada, por que pode funcionar (evidência do lote), como testar (controle vs. variação) — formato compatível com `../ads-builder/prompts/combinacoes.md`.
 
 #### 3.5 — Checklist de Execução
 Para quem for escrever o criativo novo:
 - [ ] Contém os padrões do NÚCLEO?
 - [ ] O mecanismo é específico e explicado, não genérico?
 - [ ] A história/anedota é nova, não uma paráfrase do material de referência?
-- [ ] O gancho usa um arquétipo de `knowledge/hook-taxonomy.md`, com texto próprio?
+- [ ] O gancho usa um arquétipo de `../ads-builder/knowledge/hook-taxonomy.md`, com texto próprio?
 - [ ] Zero frases ou estruturas copiadas literalmente do material de referência?
 
 ---
@@ -96,7 +96,7 @@ Quando rodar como pré-passo da Fase 2, comprima o pipeline completo num `patter
 1. **Padrões Centrais** — os 5-10 elementos não-negociáveis da Fase 1 NÚCLEO
 2. **Calibração de Voz** — registro de linguagem, nível de formalidade, padrões de frase
 3. **Template de Mecanismo** — como os criativos de referência explicam o mecanismo (profundidade, estilo de analogia)
-4. **Template de Gancho** — padrões dominantes, mapeados para IDs de `knowledge/hook-taxonomy.md` quando possível
+4. **Template de Gancho** — padrões dominantes, mapeados para IDs de `../ads-builder/knowledge/hook-taxonomy.md` quando possível
 5. **Padrão de CTA** — como a urgência/escassez é construída nos criativos de referência
 6. **Variáveis Livres** — o que é seguro (e necessário) variar — ver 3.3 acima
 7. **O Que Não Replicar** — versão comprimida de 3.2

@@ -1,12 +1,12 @@
 # Kill List — Protocolo de Atualização
 
-> A Kill List existe para impedir que futuros criativos repitam a mesma história, gancho ou ângulo psicológico para a mesma marca. É por projeto: `projects/[marca]/kill-list.md`.
+> A Kill List existe para impedir que futuros criativos repitam a mesma história, gancho ou ângulo psicológico para a mesma marca. É por projeto: `kill-list.md`, na raiz da pasta do projeto atual.
 
 ---
 
 ## Quando Consultar
 
-**Sempre antes da Fase 2** (Estratégia Criativa): leia `projects/[marca]/kill-list.md` se existir. Nenhum ângulo, gancho ou narrativa proposto pode coincidir com uma entrada já listada — nem em premissa, nem em gancho visual/verbal, nem em mecanismo de revelação.
+**Sempre antes da Fase 2** (Estratégia Criativa): leia `kill-list.md` (na pasta do projeto atual) se existir. Nenhum ângulo, gancho ou narrativa proposto pode coincidir com uma entrada já listada — nem em premissa, nem em gancho visual/verbal, nem em mecanismo de revelação.
 
 Se a kill list ainda não existe (primeiro criativo da marca), prossiga normalmente — ela será criada na primeira atualização abaixo.
 
@@ -29,7 +29,7 @@ Emoção Principal: [sentimento dominante. Ex: "Culpa, Vingança, Choque"]
 
 ## Formato do Arquivo
 
-`projects/[marca]/kill-list.md`:
+`kill-list.md` (na pasta do projeto atual):
 
 ```markdown
 # Kill List — [Marca]

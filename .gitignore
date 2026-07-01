@@ -1,9 +1,9 @@
 .env
 
-# Dados reais de marca/cliente — não vão pro repositório público
-projects/
-oferta/
-
 # Python
 __pycache__/
 *.pyc
+
+# Fonte bruta bagunçada, só serviu de base pra extração — não sobe no git
+COPY PROMPTS.docx
+referencias/

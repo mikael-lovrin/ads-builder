@@ -63,9 +63,10 @@ Formate tudo em markdown limpo, pronto para eu salvar como arquivo.
 
 ## O Que Fazer Com o Export
 
-1. Salve o markdown retornado em `corpus/raw/[nome-descritivo].md` (crie a pasta `corpus/raw/` se ainda não existir)
-2. Repita para cada conversa antiga que valer a pena minerar
-3. Quando tiver alguns acumulados, rode `python scripts/build_corpus_index.py` (faz uma triagem rápida por palavra-chave, marca `needs_knowledge_updater: true`)
-4. Depois, rode `skills/knowledge-updater/SKILL.md` numa sessão aqui no `ads-builder` — ele lê cada export, faz a extração completa seguindo `extraction-protocol.md`, propõe atualizações ao `knowledge/` (com sua aprovação) e atualiza `corpus/index.json`
+Este fluxo (minerar conversas antigas para virar conhecimento **compartilhado**) só roda em Escopo Compartilhado — dentro do repo-fonte do `ads-builder` (ver `SKILL.md` > Passo -1), nunca dentro da pasta de um projeto/marca instalado.
 
-Você também pode pular o `corpus/raw/` e colar o export direto numa sessão do `knowledge-updater` — funciona igual, só não fica salvo em disco como backup do material bruto.
+1. Cole o export direto numa sessão do `knowledge-updater` (rodando no repo-fonte do `ads-builder`) e peça pra ele processar
+2. Repita para cada conversa antiga que valer a pena minerar
+3. O `knowledge-updater` lê cada export, faz a extração completa seguindo `extraction-protocol.md`, propõe atualizações ao `knowledge/` compartilhado (com sua aprovação) e atualiza `corpus-seed/index.json`
+
+Se preferir guardar um backup em disco do material bruto antes de processar, salve o markdown em algum arquivo `.md` dentro do repo-fonte (ex. `materiais-brutos/[nome-descritivo].md`) e cole o conteúdo na sessão do mesmo jeito — o script `build_corpus_index.py` (`corpus/raw/` + triagem por palavra-chave) é pensado para o corpus **local** de um projeto/marca, não para alimentar o `corpus-seed/` compartilhado.

@@ -1,17 +1,20 @@
 """
 build_corpus_index.py
 Triagem rápida de novos materiais crus em corpus/raw/ (.md ou .txt) para o corpus
-de criativos do ads-builder. Classifica por palavra-chave (hook archetype, tipo de
-anúncio, emoção dominante, nicho, plataforma) e faz merge ADITIVO em corpus/index.json
-— nunca sobrescreve entradas existentes (inclusive as 6 entries seed, que foram
-extraídas manualmente a partir de COPY PROMPTS.docx e não têm arquivo correspondente
-em corpus/raw/).
+LOCAL desta marca/projeto (roda a partir da pasta onde o Claude Code foi aberto).
+Classifica por palavra-chave (hook archetype, tipo de anúncio, emoção dominante,
+nicho, plataforma) e faz merge ADITIVO em corpus/index.json — nunca sobrescreve
+entradas existentes.
+
+Este corpus/ local é independente do corpus-seed/ que vem embutido no pacote da
+skill (baseline compartilhada entre todos os projetos) — o que este script indexa
+aqui fica isolado desta marca, não retroalimenta o corpus-seed/ automaticamente.
 
 Esta classificação é só TRIAGEM — uma heurística rápida para saber o que existe.
 Para extração profunda (schema completo de corpus/entries/*.json), use
 skills/knowledge-updater/SKILL.md, que é quem preenche o campo "intelligent_entry".
 
-Run: python scripts/build_corpus_index.py
+Run (dentro da pasta do projeto/marca): python scripts/build_corpus_index.py
 """
 
 import json
@@ -22,9 +25,9 @@ from collections import Counter
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-BASE_DIR    = Path(__file__).parent.parent
-RAW_DIR     = BASE_DIR / "corpus" / "raw"
+BASE_DIR    = Path.cwd()
 CORPUS_DIR  = BASE_DIR / "corpus"
+RAW_DIR     = CORPUS_DIR / "raw"
 OUTPUT_FILE = CORPUS_DIR / "index.json"
 
 # IDs vêm de skills/knowledge-updater/extraction-protocol.md — manter sincronizado.

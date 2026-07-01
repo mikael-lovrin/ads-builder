@@ -2,7 +2,7 @@
 
 Objetivo: roteiro completo de vídeo (Reels/TikTok/UGC), bloco a bloco, com ganchos multi-angulares e instruções de cena/edição para o editor. Resultado salvo em `roteiros-video.md`.
 
-Consulte `projects/[marca]/briefing.md`, `estrategia-criativa.md`, `pattern-brief.md` (se existir) e `kill-list.md` antes de escrever. Leia `knowledge/structure-library.md` e `knowledge/editor-formats.md` no momento de escrever — não reproduza de memória.
+Consulte `briefing.md`, `estrategia-criativa.md`, `pattern-brief.md` (se existir) e `kill-list.md` (na pasta do projeto atual) antes de escrever. Leia `knowledge/structure-library.md` e `knowledge/editor-formats.md` no momento de escrever — não reproduza de memória.
 
 **Escreva o roteiro inteiro no idioma e na voz do mercado-alvo** definido na Fase 0 (ver `prompts/fase4-revisao-traducao.md` se o mercado-alvo for diferente do idioma desta conversa).
 
@@ -40,9 +40,9 @@ Gere **4-5 ganchos** cobrindo arquétipos diferentes de `knowledge/hook-taxonomy
 - Opção D (Story Tease)
 - [Opção E, se fizer sentido]
 
-**2 dos ganchos gerados devem usar um formato de execução fixo** de `knowledge/editor-formats.md` (cinematográfico, caixinha de perguntas, twitter screenshot ou ranking), com a instrução de cena correspondente entre colchetes. Os demais ficam `ugc_normal`.
+**2 dos ganchos gerados devem usar um formato de execução fixo** de `knowledge/editor-formats.md` (cinematográfico ou caixinha de perguntas), com a instrução de cena correspondente entre colchetes. Os demais ficam `ugc_normal`.
 
-Se um gancho usa `caixinha_perguntas`, gere também a pergunta exibida na tela. Se usa `twitter_screenshot`, gere o texto do tweet e o nome/handle da autoridade (coerente com o briefing).
+Se um gancho usa `caixinha_perguntas`, gere também a pergunta exibida na tela.
 
 **Pare e aguarde aprovação do(s) gancho(s)** antes de escrever o corpo — a menos que modo autônomo, caso em que você escolhe o gancho mais forte e registra por quê.
 
@@ -74,7 +74,7 @@ Se o usuário pedir mais de um corpo de anúncio (corpos diferentes para o mesmo
 
 ## Passo 5 — Salvar
 
-Salve `projects/[marca]/roteiros-video.md`:
+Salve `roteiros-video.md` na pasta do projeto atual:
 
 ```markdown
 # Roteiros de Vídeo — [Marca]

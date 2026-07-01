@@ -26,24 +26,6 @@ Formato UGC respondendo a uma pergunta feita numa caixinha de perguntas do Insta
 
 ---
 
-### `twitter_screenshot` — Print do Twitter/X
-Tela preta horizontal com o vídeo, e logo acima um print de um tweet de uma figura de autoridade (ex.: um médico) como se estivesse compartilhando uma descoberta. Simula compartilhamento orgânico de conteúdo, não anúncio.
-
-**Instrução de roteiro:** `[TELA PRETA, HORIZONTAL — PRINT DE TWEET NO TOPO: AUTOR "[nome/handle de autoridade]", TEXTO: "[tweet gerado]"]`
-
-**Quando usar:** ganchos `conspiracao_revelada` — a autoridade citada precisa ser coerente com o briefing (ex.: se o produto tem um médico real como expert, usar a voz dele).
-
----
-
-### `ranking` — Ranking
-Números na tela, formato Top 3 ou Top 5 do que fazer ou evitar para atingir um resultado X.
-
-**Instrução de roteiro:** `[FORMATO RANKING — NÚMEROS GRANDES NA TELA, 1 A [3 OU 5], CADA ITEM COM TEXTO CURTO DE APOIO]`
-
-**Quando usar:** ganchos `transformacao_visual_especifica` ou `contrarian` — bom para condensar várias provas/argumentos do `municao`/briefing num formato rápido de consumir.
-
----
-
 ### `ugc_normal` — UGC Normal (default)
 Sem formato de execução específico — vídeo padrão de UGC, pessoa falando direto pra câmera, sem elementos visuais adicionais além do que a cena pedir naturalmente.
 
@@ -55,10 +37,10 @@ Sem formato de execução específico — vídeo padrão de UGC, pessoa falando 
 
 | Arquétipo de gancho | Formato sugerido |
 |---|---|
-| `aviso_reverso` | `ugc_normal` ou `ranking` |
-| `conspiracao_revelada` | `twitter_screenshot` |
+| `aviso_reverso` | `ugc_normal` |
+| `conspiracao_revelada` | `ugc_normal` |
 | `injustica_comparativa` | `caixinha_perguntas` |
-| `transformacao_visual_especifica` | `ranking` |
+| `transformacao_visual_especifica` | `ugc_normal` |
 | `ouch_factor` | `caixinha_perguntas` ou `ugc_normal` |
 | `contrarian` | `cinematografico` |
 | `story_tease` | `ugc_normal` |

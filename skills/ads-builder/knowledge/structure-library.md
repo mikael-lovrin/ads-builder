@@ -17,7 +17,7 @@ Gere 4-5 opções de abertura para o mesmo roteiro, cobrindo arquétipos diferen
 - **Opção C (Contrarian):** ataque a um método tradicional como perda de tempo
 - **Opção D (Story Tease):** início in media res, no meio de uma história/drama
 
-2 das 4-5 opções devem usar um dos formatos de execução fixos de `editor-formats.md` (cinematográfico, caixinha de perguntas, twitter screenshot, ranking); as demais ficam como UGC normal, sem formato específico.
+2 das 4-5 opções devem usar um dos formatos de execução fixos de `editor-formats.md` (cinematográfico, caixinha de perguntas); as demais ficam como UGC normal, sem formato específico.
 
 ### 2. Delimitação (O Filtro)
 Chama o público específico (idade, condição, dor) de forma imediata e explícita — ex.: "Se você é mãe e tem pochete...", "Se você já tentou academia e salada e nada funcionou...".

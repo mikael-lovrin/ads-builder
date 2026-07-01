@@ -7,110 +7,96 @@ Agente de IA (construído sobre [Claude Code](https://claude.com/claude-code)) q
 
 Opcionalmente, o agente também **gera as imagens de fato** (não só o prompt) via API da OpenAI e/ou via conector Higgsfield, se configurados.
 
+Este repositório é o **repo-fonte** da skill — instale uma vez, depois trabalhe em pastas dedicadas por marca, em qualquer lugar da sua máquina (ver abaixo).
+
 ---
 
 ## Requisitos
 
 - [Claude Code](https://claude.com/claude-code) instalado (`claude --version` deve funcionar)
-- Python 3.10+ (para os scripts em `scripts/`)
+- Python 3.10+ (para os scripts, usados só se for gerar imagens de fato ou fazer triagem em lote do corpus)
 - Opcional, só se for gerar imagens de fato:
   - Conta OpenAI com billing ativo (ver [Conectar OpenAI](#conectar-openai-geração-de-imagem))
   - Conta paga na Higgsfield (ver [Conectar Higgsfield](#conectar-higgsfield-imagem--vídeo))
 
 ---
 
-## Como chamar o agente
+## Instalação
 
-1. Abra um terminal **dentro desta pasta** (`ads-builder/`) — o agente não precisa de instalação, o corpus e o knowledge base já vivem aqui
-2. Rode `claude`
-3. Peça em linguagem natural, por exemplo:
-   - *"quero criar um anúncio para a marca X"* → dispara o onboarding (Fase 0)
-   - *"continua o projeto da marca X"* → o agente lê `projects/X/progress.md` e retoma de onde parou
-   - *"analisa esses anúncios de concorrente"* / *"lateraliza isso"* → dispara o skill de análise de padrão isoladamente
-   - *"adiciona esse criativo ao corpus"* → dispara o knowledge-updater
+1. Baixe/clone este repositório
+2. Rode `Install.bat` (duplo clique, ou `.\Install.bat` num terminal). Ele copia as 3 skills (`ads-builder`, `creative-pattern-analysis`, `knowledge-updater`) para `%USERPROFILE%\.claude\skills\` — disponíveis a partir de agora em qualquer pasta, junto com seus outros agentes.
 
-Não existe comando de barra dedicado — o roteamento é feito pelo próprio Claude Code lendo `skills/ads-builder/SKILL.md` (e os outros `SKILL.md`) pela descrição da tarefa pedida.
+Sempre que você atualizar `knowledge/` neste repo-fonte (novos arquétipos de gancho, estruturas, etc.), rode `Install.bat` de novo para propagar a atualização a todas as marcas já criadas — elas leem a mesma cópia compartilhada, não precisam ser recriadas.
 
 ---
 
-## Estrutura de pastas — o que precisa existir
+## Como usar (por marca)
+
+1. Crie uma pasta vazia dedicada para a marca/produto (ex. `minhas-marcas/acme/`), fora deste repo — **nunca dentro de `ads-builder/`**
+2. Abra um terminal dentro dela e rode `claude`
+3. Peça em linguagem natural, por exemplo:
+   - *"quero criar um anúncio pra essa marca"* → dispara o onboarding (Fase 0)
+   - *"continua o projeto"* → o agente lê `progress.md` (na pasta atual) e retoma de onde parou
+   - *"analisa esses anúncios de concorrente"* / *"lateraliza isso"* → dispara o skill de análise de padrão isoladamente
+   - *"adiciona esse criativo ao corpus"* → dispara o knowledge-updater (corpus local desta marca)
+
+Não existe comando de barra dedicado — o roteamento é feito pelo próprio Claude Code lendo `SKILL.md` de cada skill instalada, pela descrição da tarefa pedida. Todos os arquivos gerados (`briefing.md`, `kill-list.md`, `tracking/`, `output/imagens/`) ficam centralizados nesta mesma pasta — nada é escrito de volta neste repo-fonte.
+
+---
+
+## Estrutura — repo-fonte vs. pasta de marca
 
 ```
-ads-builder/
-├── CLAUDE.md                         ← instruções do projeto para o agente (não editar sem entender o impacto)
+ads-builder/  (repo-fonte — onde a skill é mantida, não onde você trabalha)
+├── CLAUDE.md
 ├── README.md                         ← este arquivo
 ├── LICENSE                           ← CC BY-NC-ND 4.0
-├── COPY PROMPTS.docx                 ← fonte original dos prompts (não editar)
-├── requirements.txt                  ← dependências Python (openai)
-├── .env.example                      ← modelo de variáveis de ambiente (copiar para .env)
-├── .mcp.json                         ← config de conectores MCP do projeto (ex.: higgsfield) — versionável, sem segredo
-│
-├── referencias/
-│   └── copy-prompts-extraido.md      ← transcrição legível do docx original
-│
-├── corpus/                           ← banco de criativos validados (cresce com o uso)
-│   ├── index.json                    ← índice com metadados de todas as entries
-│   ├── entries/                      ← JSONs de intelligence extraída (hook, estrutura, estilo)
-│   ├── raw/                          ← (criado sob demanda) materiais crus aguardando triagem
-│   └── updater-log.json              ← log de sessões do knowledge-updater
-│
-├── knowledge/                        ← base de conhecimento estruturada (fundação do framework)
-│   ├── hook-taxonomy.md              ← arquétipos de gancho (niche-agnostic)
-│   ├── structure-library.md          ← estrutura de 8 blocos + 3 estruturas invisíveis + CTA triplo
-│   ├── static-image-psychology.md    ← 10 princípios de conversão + 5 estilos visuais fixos
-│   └── editor-formats.md             ← formatos de execução/edição
-│
-├── projects/                         ← criado sob demanda, um subdiretório por marca/produto
-│   └── [marca]/
-│       ├── progress.md               ← estado atual (gerenciado silenciosamente pelo agente)
-│       ├── briefing.md               ← Fase 0 + Fase 1 (dados reais do produto)
-│       ├── pattern-brief.md          ← se veio de lateralização (Cenário A)
-│       ├── estrategia-criativa.md    ← Fase 2 (ângulo, gancho, estrutura escolhidos)
-│       ├── roteiros-video.md         ← Fase 3a, se o tipo de anúncio inclui vídeo
-│       ├── briefing-imagem.md        ← Fase 3b, se o tipo de anúncio inclui imagem
-│       ├── kill-list.md              ← ângulos/ganchos/histórias já usados — nunca repetir
-│       ├── brand/                    ← opcional — logo, fotos de produto, paleta (Fase 3c modo mockup)
-│       ├── output/imagens/           ← PNGs gerados de fato (Fase 3c) + manifest.json
-│       └── tracking/
-│           ├── test-matrix.json      ← matriz de combinações testadas + backlog
-│           ├── insights.md           ← biblioteca de aprendizados por marca
-│           └── sugestoes-log.json    ← histórico de sugestões feitas
-│
-├── scripts/
-│   ├── build_corpus_index.py         ← regenera corpus/index.json a partir de corpus/entries|raw
-│   └── generate_images.py            ← gera imagens de fato via OpenAI (Fase 3c)
+├── Install.bat                       ← copia as skills para ~/.claude/skills/
+├── .mcp.json                         ← config de conectores MCP deste repo (ex.: higgsfield) — versionável, sem segredo
 │
 └── skills/
     ├── ads-builder/
-    │   ├── SKILL.md                      ← orquestrador principal — leia primeiro para entender o fluxo
-    │   └── prompts/
-    │       ├── fase0-onboarding.md       ← sempre roda primeiro num projeto novo
-    │       ├── fase1-extracao-produto.md
-    │       ├── fase2-estrategia-criativa.md
-    │       ├── fase3a-roteiro-video.md
-    │       ├── fase3b-briefing-imagem.md
-    │       ├── fase3c-geracao-imagem.md  ← opcional — gera PNGs de fato (OpenAI)
-    │       ├── fase4-revisao-traducao.md ← opcional
-    │       ├── kill-list.md              ← protocolo de atualização da kill list
-    │       └── combinacoes.md            ← protocolo da matriz de testes
+    │   ├── SKILL.md                      ← orquestrador principal
+    │   ├── knowledge/                    ← base de conhecimento (bundled, compartilhada entre marcas)
+    │   ├── corpus-seed/                  ← baseline de exemplos (bundled, somente leitura em runtime)
+    │   ├── scripts/                      ← generate_images.py, build_corpus_index.py (rodam na pasta da marca)
+    │   ├── requirements.txt
+    │   ├── .env.example
+    │   └── prompts/                      ← fase0 a fase4, kill-list.md, combinacoes.md
     ├── creative-pattern-analysis/
     │   └── SKILL.md                      ← lateralização — analisa referências → Lateralization Brief
     └── knowledge-updater/
-        ├── SKILL.md                      ← extração/curadoria de novos materiais para o corpus
+        ├── SKILL.md                      ← extração/curadoria — compartilhada (aqui) ou local (numa marca)
         ├── extraction-protocol.md
         ├── export-prompt.md              ← prompt pronto para minerar conversas antigas de outro projeto
         └── adapters/social-creative.md
 ```
 
-**Únicas pastas que não vêm prontas** (o agente cria sob demanda): `corpus/raw/`, `projects/`, e dentro de cada marca, `brand/` e `output/`. Nada disso precisa ser criado manualmente — o agente cuida disso ao longo do fluxo.
+```
+[pasta da marca, ex. minhas-marcas/acme/]  (onde você trabalha, criada por você)
+├── progress.md                       ← estado atual (gerenciado silenciosamente pelo agente)
+├── briefing.md                       ← Fase 0 + Fase 1 (dados reais do produto)
+├── pattern-brief.md                  ← se veio de lateralização (Cenário A)
+├── estrategia-criativa.md            ← Fase 2 (ângulo, gancho, estrutura escolhidos)
+├── roteiros-video.md                 ← Fase 3a, se o tipo de anúncio inclui vídeo
+├── briefing-imagem.md                ← Fase 3b, se o tipo de anúncio inclui imagem
+├── kill-list.md                      ← ângulos/ganchos/histórias já usados — nunca repetir
+├── brand/                            ← opcional — logo, fotos de produto, paleta (Fase 3c modo mockup)
+├── corpus/                            ← opcional — corpus específico desta marca, isolado (via knowledge-updater)
+├── output/imagens/                   ← PNGs gerados de fato (Fase 3c) + manifest.json
+└── tracking/
+    ├── test-matrix.json              ← matriz de combinações testadas + backlog
+    ├── insights.md                   ← biblioteca de aprendizados desta marca
+    └── sugestoes-log.json            ← histórico de sugestões feitas
+```
 
-> **Nota:** `projects/` (dados reais de marca/cliente) está no `.gitignore` — não é enviado a este repositório público. Cada marca fica só na máquina local de quem está rodando o agente.
+Nada na pasta da marca precisa ser criado manualmente — o agente cuida disso ao longo do fluxo, a partir da pasta vazia do Passo 1.
 
 ---
 
 ## Todas as formas que o agente atua
 
-### 1. Fluxo principal — criar um criativo do zero (`skills/ads-builder`)
+### 1. Fluxo principal — criar um criativo do zero (`ads-builder`)
 Por marca/produto, em fases sequenciais (aprovação humana em cada uma, ou modo autônomo escolhido na Fase 0):
 
 | Fase | O que faz | Sempre roda? |
@@ -124,11 +110,15 @@ Por marca/produto, em fases sequenciais (aprovação humana em cada uma, ou modo
 | 3c — Geração de Imagem | Gera os PNGs de fato via API (opcional, só com aprovação explícita de quais) | Opcional |
 | 4 — Revisão/Tradução | Revisa ou traduz o material gerado | Sob pedido |
 
-### 2. Lateralização de anúncios (`skills/creative-pattern-analysis`)
+### 2. Lateralização de anúncios (`creative-pattern-analysis`)
 Roda standalone (você manda criativos e pede análise) ou automaticamente como pré-passo da Fase 2. Faz engenharia reversa da estrutura invisível de criativos de referência (11 dimensões: ângulo de venda, disfarce, mecanismo, sequenciamento de blocos, etc.), separa `[OBSERVAÇÃO]` de `[INFERÊNCIA]` de `[HIPÓTESE]`, e entrega um brief para escrever algo com o mesmo DNA estrutural — **nunca um clone**. Pergunta de verificação central: *"se eu trocasse o produto, o avatar e a história, essa estrutura ainda faria sentido?"*
 
-### 3. Crescimento do corpus (`skills/knowledge-updater`)
-Extrai, classifica e propõe atualizações ao `knowledge/` a partir de novos criativos validados (colados na conversa ou salvos em `corpus/raw/`). Roda `scripts/build_corpus_index.py` para triagem rápida por palavra-chave; a extração profunda (schema completo) é feita pelo skill. Para minerar conversas antigas fora deste projeto, usa `skills/knowledge-updater/export-prompt.md`.
+### 3. Crescimento do corpus (`knowledge-updater`)
+Extrai, classifica e propõe atualizações a partir de novos criativos validados (colados na conversa ou salvos em `corpus/raw/`). Tem dois escopos (pergunta no início da sessão, ver `SKILL.md` > Passo -1):
+- **Local** — rodando dentro da pasta de uma marca: cria/atualiza um `corpus/` isolado daquela marca só.
+- **Compartilhado** — rodando aqui no repo-fonte: atualiza `skills/ads-builder/knowledge/` e `corpus-seed/`, que todas as marcas passam a ler assim que você rodar `Install.bat` de novo.
+
+Para minerar conversas antigas fora deste projeto (sempre em escopo Compartilhado), usa `skills/knowledge-updater/export-prompt.md`.
 
 ### 4. Gestão automática de estado
 - `progress.md` por marca — atualizado silenciosamente a cada fase, permite retomar sessões
@@ -144,27 +134,28 @@ Por padrão o agente só **escreve o brief** (prompt de imagem, roteiro de víde
 ### Conectar OpenAI (geração de imagem)
 
 1. Crie uma chave em [platform.openai.com](https://platform.openai.com) → Settings → API keys (exige billing ativo e, para `gpt-image-1`, verificação de organização em Settings → Organization → General → Verify Organization)
-2. `pip install -r requirements.txt`
-3. Copie `.env.example` para `.env` e cole a chave: `OPENAI_API_KEY=sk-...` (o `.env` já está no `.gitignore` — nunca é commitado)
-4. Use a Fase 3c (`skills/ads-builder/prompts/fase3c-geracao-imagem.md`) ou rode direto:
+2. `pip install -r ~/.claude/skills/ads-builder/requirements.txt` (uma vez só, não por marca)
+3. Na pasta da marca, copie `~/.claude/skills/ads-builder/.env.example` para `.env` e cole a chave: `OPENAI_API_KEY=sk-...` (o `.env` fica só naquela pasta, não é commitado em lugar nenhum)
+4. Use a Fase 3c (`skills/ads-builder/prompts/fase3c-geracao-imagem.md`) ou rode direto, de dentro da pasta da marca:
    ```bash
-   python scripts/generate_images.py dr --marca [marca] --corpo 1 --estilo realistic_photography
-   python scripts/generate_images.py mockup --marca [marca] --prompt "..." --ref brand/logo.png
+   python "$HOME/.claude/skills/ads-builder/scripts/generate_images.py" dr --corpo 1 --estilo realistic_photography
+   python "$HOME/.claude/skills/ads-builder/scripts/generate_images.py" mockup --prompt "..." --ref brand/logo.png
    ```
+   (No Windows: `%USERPROFILE%\.claude\skills\ads-builder\scripts\generate_images.py`.)
    - Modo `dr` — gera os image ads do `briefing-imagem.md` sem assets de marca (regra do framework: produto/logo não aparecem no frame desses criativos, é isso que os faz parecer nativos)
-   - Modo `mockup` — criativo pontual com logo/produto de verdade, usando os assets de `projects/[marca]/brand/`
+   - Modo `mockup` — criativo pontual com logo/produto de verdade, usando os assets de `brand/` (na pasta da marca)
 
 ### Conectar Higgsfield (imagem + vídeo)
 
-Se vocês têm conta paga na Higgsfield, dá para conectar o servidor MCP dela direto no Claude Code — sem gerenciar API key, autenticação é OAuth com a própria conta:
+Se você tem conta paga na Higgsfield, dá para conectar o servidor MCP dela direto no Claude Code — sem gerenciar API key, autenticação é OAuth com a própria conta. Como a conexão é `--scope project`, rode isto **de dentro da pasta da marca** (não deste repo-fonte):
 
 ```bash
 claude mcp add --transport http --scope project higgsfield https://mcp.higgsfield.ai/mcp
 ```
 
-Depois, dentro de uma sessão `claude` nesta pasta: aprove o servidor quando o prompt aparecer, rode `/mcp` → selecione `higgsfield` → `Authenticate`, faça login no navegador. Confirme com `claude mcp list` (deve mostrar `✔ Connected`).
+Depois, dentro de uma sessão `claude` naquela pasta: aprove o servidor quando o prompt aparecer, rode `/mcp` → selecione `higgsfield` → `Authenticate`, faça login no navegador. Confirme com `claude mcp list` (deve mostrar `✔ Connected`).
 
-**Com a conta Higgsfield conectada, o agente ganha ferramentas diretas de geração** — ele mesmo escreve o prompt final e chama a geração de imagem (até 4K) ou vídeo (até 15s por clipe, vários estilos cinematográficos, inclusive personagem consistente via "Soul") sem sair da conversa. Importante: a integração precisa de uma sessão do Claude Code iniciada **depois** que a conexão foi estabelecida — conectores MCP não aparecem em sessões que já estavam abertas antes.
+**Com a conta Higgsfield conectada, o agente ganha ferramentas diretas de geração** — ele mesmo escreve o prompt final e chama a geração de imagem (até 4K) ou vídeo (até 15s por clipe, vários estilos cinematográficos, inclusive personagem consistente via "Soul") sem sair da conversa. Importante: a integração precisa de uma sessão do Claude Code iniciada **depois** que a conexão foi estabelecida — conectores MCP não aparecem em sessões que já estavam abertas antes. Se quiser Higgsfield disponível em toda marca nova, repita o comando `claude mcp add` em cada pasta (ou use `--scope user` para deixar disponível globalmente, em vez de por pasta).
 
 ---
 

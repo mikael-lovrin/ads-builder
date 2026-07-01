@@ -42,7 +42,7 @@
 **Por que funciona:** é tangível e visual — números específicos funcionam como prova implícita (ver `static-image-psychology.md`, princípio 6), e a reação de uma autoridade (médico, treinador) valida o resultado sem o espectador precisar confiar cegamente no narrador.
 **Template:** `"De [estado A] para [estado B] em [prazo] fazendo [ação contra-intuitiva]. [Autoridade] não acreditou."`
 **Exemplo do corpus:** *"De L para S em 60 dias comendo chocolate diariamente. Meu médico não acreditou nos exames."*
-**Quando usar:** o gancho mais forte para o estilo visual `infographic` e `realistic_photography` em imagem estática; em vídeo, funciona bem com o formato de execução `ranking` ou `antes_depois`.
+**Quando usar:** o gancho mais forte para o estilo visual `infographic` e `realistic_photography` em imagem estática; em vídeo, funciona bem com o formato de execução `antes_depois`.
 
 ---
 

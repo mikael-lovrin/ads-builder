@@ -84,8 +84,8 @@ Depende do tipo de criativo (D2):
       "hook_text": "Por que você come pouco e engorda, enquanto sua amiga come muito e emagrece?",
       "editor_format": "caixinha_perguntas",
       "files": {
-        "estrategia": "projects/marca/estrategia-criativa.md",
-        "roteiro_ou_briefing": "projects/marca/roteiros-video.md"
+        "estrategia": "estrategia-criativa.md",
+        "roteiro_ou_briefing": "roteiros-video.md"
       },
       "result": {
         "metric_primary": null,
@@ -146,7 +146,7 @@ Depende do tipo de criativo (D2):
 
 Quando criar projeto novo ou quando `test-matrix.json` não existir:
 
-1. Crie `projects/[marca]/tracking/test-matrix.json` com o schema acima
+1. Crie `tracking/test-matrix.json` (na pasta do projeto atual) com o schema acima
 2. Preencha `brand`, `niche`, `last_updated`, `active_angle` (se ângulo já definido)
 3. `tests`, `backlog` = arrays vazios
 4. `coverage` com todos os arrays vazios
@@ -206,7 +206,7 @@ Regra: nunca mude ângulo durante P1.
 ### P2 — Teste de Cobertura (após LOSER ou INCONCLUSIVE)
 Mude pelo menos 2 variáveis para testar hipótese diferente. Priorize:
 - Estrutura/estilo nunca testado para este ângulo (do coverage)
-- Hook archetype com maior taxa de sucesso no corpus para este nicho (consultar `corpus/index.json`)
+- Hook archetype com maior taxa de sucesso no corpus para este nicho (consultar `corpus-seed/index.json`, e `corpus/index.json` local se existir)
 - Emoção não testada ainda (do coverage)
 - `editor_format` recomendado por `knowledge/editor-formats.md` mas não usado ainda (se vídeo)
 

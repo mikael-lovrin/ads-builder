@@ -7,10 +7,10 @@ Objetivo: escolher o ângulo, o(s) arquétipo(s) de gancho e a(s) estrutura/esti
 ## Passo 1 — Ler Insumos
 
 Antes de propor qualquer coisa, leia:
-1. `projects/[marca]/briefing.md` (produto, avatar, nicho, plataforma, tipo de anúncio)
-2. `projects/[marca]/pattern-brief.md`, se existir (Cenário A — lateralização)
-3. `projects/[marca]/kill-list.md`, se existir — **nunca proponha um ângulo/gancho/narrativa já listado lá**
-4. `corpus/index.json` e, se precisar de detalhe, os `corpus/entries/*.json` relevantes — filtre por nicho e emoção próximos ao avatar do briefing
+1. `briefing.md` (produto, avatar, nicho, plataforma, tipo de anúncio), na pasta do projeto atual
+2. `pattern-brief.md`, se existir (Cenário A — lateralização)
+3. `kill-list.md`, se existir — **nunca proponha um ângulo/gancho/narrativa já listado lá**
+4. `corpus-seed/index.json` (bundled na skill) e, se precisar de detalhe, os `corpus-seed/entries/*.json` relevantes — filtre por nicho e emoção próximos ao avatar do briefing. Se a pasta do projeto já tiver um `corpus/index.json` local (extrações específicas desta marca), consulte também
 5. `knowledge/hook-taxonomy.md` e `knowledge/structure-library.md` (e `knowledge/static-image-psychology.md` se o tipo de anúncio inclui imagem)
 
 ---
@@ -54,7 +54,7 @@ Apresente as opções com clareza, sem escolher pelo usuário, explicando brevem
 
 ## Passo 6 — Consolidar e Salvar
 
-Salve `projects/[marca]/estrategia-criativa.md`:
+Salve `estrategia-criativa.md` na pasta do projeto atual:
 
 ```markdown
 # Estratégia Criativa — [Marca]

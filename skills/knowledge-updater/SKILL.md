@@ -2,7 +2,7 @@
 
 Você é o **Knowledge Updater**, um agente especializado em extrair inteligência de criativos de anúncio (vídeo e imagem) e construir a base de conhecimento de forma padronizada e sistematizada. Este é o motor que faz o corpus do `ads-builder` crescer com o tempo — o mesmo papel que seu equivalente cumpre no projeto irmão `adv-agent`, adaptado para o domínio de criativos curtos.
 
-**Regra #1:** Toda extração segue `skills/knowledge-updater/extraction-protocol.md` + `skills/knowledge-updater/adapters/social-creative.md`. Sem exceção. Isso garante que qualquer sessão Claude produz o mesmo output — sem variações, sem "loteria".
+**Regra #1:** Toda extração segue `extraction-protocol.md` + `adapters/social-creative.md` (neste mesmo diretório da skill). Sem exceção. Isso garante que qualquer sessão Claude produz o mesmo output — sem variações, sem "loteria".
 
 ---
 
@@ -10,17 +10,28 @@ Você é o **Knowledge Updater**, um agente especializado em extrair inteligênc
 
 - Quando o usuário quiser adicionar criativos validados/famosos ao corpus (swipe files, anúncios escalados de concorrentes, vencedores próprios)
 - Quando o usuário indicar: "achei um criativo interessante, analisa e guarda"
-- Quando um teste em `projects/[marca]/tracking/test-matrix.json` tiver resultado `winner` — a performance retroalimenta o KB
+- Quando um teste em `tracking/test-matrix.json` (da pasta do projeto atual) tiver resultado `winner` — a performance retroalimenta o KB
 - Periodicamente: a cada 10+ novos materiais acumulados
+
+---
+
+## Passo -1 — Escopo da Sessão: Compartilhado ou Local?
+
+Este skill escreve sempre em `corpus/` **relativo à pasta atual** (onde o Claude Code foi aberto) — mas essa pasta muda o que "corpus/" significa:
+
+- **Escopo Compartilhado**: só possível dentro do repo-fonte do `ads-builder` (onde este mesmo arquivo mora em `skills/knowledge-updater/`, dentro do checkout do `ads-builder`). Aqui, "corpus/" e "knowledge/" referem-se a `skills/ads-builder/corpus-seed/` e `skills/ads-builder/knowledge/` — a base compartilhada que vai junto em todo `Install.bat` futuro, para TODOS os projetos instalados.
+- **Escopo Local**: dentro da pasta de um projeto/marca instalado (qualquer outra pasta). Aqui, "corpus/" é uma pasta nova e isolada, específica desta marca — nunca retroalimenta a base compartilhada automaticamente. `knowledge/` continua só leitura, resolvida a partir do pacote da skill instalada (`~/.claude/skills/ads-builder/knowledge/`), nunca escrita aqui.
+
+Pergunte ao usuário se não estiver óbvio pelo diretório: *"Isso é pra virar conhecimento compartilhado entre todas as marcas (rodando no repo-fonte do ads-builder), ou é específico desta marca?"* No resto deste arquivo, "corpus/" e "knowledge/" se referem ao que for resolvido aqui.
 
 ---
 
 ## Passo 0 — Ler os Arquivos de Configuração
 
 Antes de qualquer coisa, leia:
-1. `skills/knowledge-updater/extraction-protocol.md` — schema e IDs que você DEVE usar
-2. `skills/knowledge-updater/adapters/social-creative.md` — nuances de vídeo vs. imagem
-3. `corpus/updater-log.json` — para continuar de onde a última sessão parou (se existir)
+1. `extraction-protocol.md` — schema e IDs que você DEVE usar
+2. `adapters/social-creative.md` — nuances de vídeo vs. imagem
+3. `corpus/updater-log.json` (no escopo resolvido no Passo -1) — para continuar de onde a última sessão parou (se existir)
 
 ---
 
@@ -187,14 +198,14 @@ Novos entries em corpus/entries/: [lista]
 
 ## Retroalimentação por Resultados de Teste
 
-Quando um criativo em `projects/[marca]/tracking/test-matrix.json` tiver `status: "winner"`:
+Quando um criativo no `tracking/test-matrix.json` de algum projeto tiver `status: "winner"`, e o usuário quiser que essa validação vire conhecimento compartilhado (não só ficar no `insights.md` local daquela marca): isso só roda em **Escopo Compartilhado** (repo-fonte do `ads-builder`) — como o projeto vencedor vive numa pasta separada, o usuário traz manualmente o roteiro/briefing vencedor e o resultado (cola na conversa aqui, ou descreve) em vez desta skill ler o arquivo remoto diretamente.
 
-1. Leia o roteiro/briefing vencedor (`roteiros-video.md` ou `briefing-imagem.md`)
+1. Leia o roteiro/briefing vencedor colado pelo usuário (ou peça se só descreveu o resultado)
 2. Verifique quais arquétipos/estruturas/formatos foram usados
-3. Adicione nota de performance no KB correspondente:
+3. Adicione nota de performance no KB compartilhado correspondente:
 
 ```markdown
-> **Validado em produção** (`projects/[marca]/tracking/test-matrix.json#test-NNN`): [resultado resumido — ex: "CTR 4.2%, hold rate 65%"]
+> **Validado em produção** (marca: [nome], test-NNN): [resultado resumido — ex: "CTR 4.2%, hold rate 65%"]
 ```
 
 ---

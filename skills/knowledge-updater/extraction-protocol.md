@@ -179,7 +179,7 @@ Ref. completa com fórmulas e exemplos: `knowledge/hook-taxonomy.md`.
 
 ---
 
-### B6 — Formato de Execução / Edição (5 IDs, só vídeo)
+### B6 — Formato de Execução / Edição (3 IDs, só vídeo)
 
 Ref. completa: `knowledge/editor-formats.md`.
 
@@ -187,8 +187,6 @@ Ref. completa: `knowledge/editor-formats.md`.
 |----|------|
 | `cinematografico` | Tela preta, lettering, legenda palavra-por-palavra |
 | `caixinha_perguntas` | UGC respondendo pergunta de caixinha do Instagram |
-| `twitter_screenshot` | Print de tweet de autoridade acima do vídeo |
-| `ranking` | Top 3/Top 5 numerado na tela |
 | `ugc_normal` | Default, sem formato específico |
 
 ---
@@ -217,7 +215,7 @@ Ref. completa: `knowledge/editor-formats.md`.
 
 ### C3 — Identificar o Formato de Execução (só vídeo)
 
-Pergunta de validação: o material especifica uma forma de filmagem/edição específica (tela preta+lettering, caixinha de pergunta, print de tweet, ranking numerado)? Se não, classifique como `ugc_normal` ou deixe `null` se o material é puramente sobre estrutura/copy, não sobre execução visual.
+Pergunta de validação: o material especifica uma forma de filmagem/edição específica (tela preta+lettering, caixinha de pergunta)? Se não, classifique como `ugc_normal` ou deixe `null` se o material é puramente sobre estrutura/copy, não sobre execução visual.
 
 ### C4 — Determinar Emoção Dominante
 
@@ -249,7 +247,7 @@ Só crie nova entrada se:
 ```markdown
 ### [Nome do item]
 **Fonte no corpus:** `corpus/entries/arquivo1.json`, `corpus/entries/arquivo2.json`
-**Validado em produção:** Não (ainda sem dados) / Sim — [referência em projects/[marca]/tracking/]
+**Validado em produção:** Não (ainda sem dados) / Sim — [marca + referência de teste trazida pelo usuário, ver knowledge-updater/SKILL.md#retroalimentação]
 
 [Definição]
 

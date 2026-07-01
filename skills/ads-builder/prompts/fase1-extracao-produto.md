@@ -36,7 +36,7 @@ Se o usuário não tiver material-fonte (Cenário B, do zero), faça as 9 pergun
 
 ## Salvar
 
-Anexe a extração a `projects/[marca]/briefing.md`, como uma seção `## Extração de Produto`:
+Anexe a extração a `briefing.md` (na pasta do projeto atual), como uma seção `## Extração de Produto`:
 
 ```markdown
 ## Extração de Produto

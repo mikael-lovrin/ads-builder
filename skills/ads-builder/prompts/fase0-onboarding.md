@@ -6,7 +6,7 @@
 
 ## Passo 1 — Verificar Projeto Existente
 
-Verifique se `projects/[marca]/progress.md` existe.
+Verifique se `progress.md` existe na pasta do projeto atual.
 
 - **Sim** → Leia-o. Informe: *"Encontrei progresso salvo para [marca]: [última fase concluída], próximo passo: [próxima fase]. Quer continuar daqui ou recomeçar do zero?"*
   - Continuar → vá direto para a fase indicada. Pule os passos abaixo.
@@ -89,7 +89,7 @@ Colete (ou extraia do que o usuário já forneceu):
 3. Nicho principal
 4. Avatar: quem é a pessoa que compra? (idade, situação, problema principal, o que já tentou)
 5. Tem ângulo em mente? (ou deixa o agente sugerir na Fase 2)
-6. O que já foi testado antes para esta marca? (ou "nenhum histórico ainda" — vale checar projects/[marca]/kill-list.md se já existir)
+6. O que já foi testado antes para esta marca? (ou "nenhum histórico ainda" — vale checar `kill-list.md` se já existir na pasta do projeto)
 ```
 
 **Se Cenário C**, adicione:
@@ -102,7 +102,7 @@ Colete (ou extraia do que o usuário já forneceu):
 
 ## Passo 8 — Salvar
 
-**Salve `projects/[marca]/briefing.md`** (parte 1 — a parte 2 é completada na Fase 1):
+**Salve `briefing.md`** na pasta do projeto atual (parte 1 — a parte 2 é completada na Fase 1):
 
 ```markdown
 # Briefing — [Nome da Marca]
@@ -129,7 +129,7 @@ Colete (ou extraia do que o usuário já forneceu):
 [o que o usuário informou | "nenhum teste anterior registrado"]
 ```
 
-**Inicialize `projects/[marca]/tracking/test-matrix.json`** seguindo o protocolo de inicialização em `prompts/combinacoes.md`. Se já existe e o usuário escolheu continuar (não recomeçar), preserve o JSON existente.
+**Inicialize `tracking/test-matrix.json`** (na pasta do projeto atual) seguindo o protocolo de inicialização em `prompts/combinacoes.md`. Se já existe e o usuário escolheu continuar (não recomeçar), preserve o JSON existente.
 
 **Crie/atualize `progress.md`:**
 ```markdown

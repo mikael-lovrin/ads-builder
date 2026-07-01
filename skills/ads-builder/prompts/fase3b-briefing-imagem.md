@@ -2,7 +2,7 @@
 
 Objetivo: brief completo de criativos de imagem estática (Meta), com pesquisa de psicologia aplicada ao avatar específico, 2 corpos x 5 estilos visuais fixos = 10 image ads (prompt de imagem + hook + body copy cada), e notas de produção. Resultado salvo em `briefing-imagem.md`.
 
-Consulte `projects/[marca]/briefing.md`, `estrategia-criativa.md`, `pattern-brief.md` (se existir) e `kill-list.md` antes de escrever. Leia `knowledge/static-image-psychology.md` no momento de escrever — não reproduza de memória.
+Consulte `briefing.md`, `estrategia-criativa.md`, `pattern-brief.md` (se existir) e `kill-list.md` (na pasta do projeto atual) antes de escrever. Leia `knowledge/static-image-psychology.md` no momento de escrever — não reproduza de memória.
 
 **Escreva todo o brief no idioma e na voz do mercado-alvo** definido na Fase 0.
 
@@ -71,7 +71,7 @@ Encerre o brief com:
 
 ## Passo 5 — Salvar
 
-Salve `projects/[marca]/briefing-imagem.md` com a estrutura: Pesquisa de Psicologia → Corpo 1 (5 image ads) → Corpo 2 (5 image ads) → Production Notes.
+Salve `briefing-imagem.md` (na pasta do projeto atual) com a estrutura: Pesquisa de Psicologia → Corpo 1 (5 image ads) → Corpo 2 (5 image ads) → Production Notes.
 
 **Cada um dos 10 image ads precisa usar exatamente este cabeçalho de seção** (é o formato que `scripts/generate_images.py` faz parsing para a Fase 3c — geração de imagem):
 

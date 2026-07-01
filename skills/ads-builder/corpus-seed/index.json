@@ -82,8 +82,8 @@
       "dominant_emotion": "curiosidade",
       "structure_or_style": null,
       "platform": ["reels", "tiktok", "stories"],
-      "mechanism_hint": "4 formatos fixos de execução visual (cinematográfico, caixinha de perguntas, twitter screenshot, ranking).",
-      "notable_technique": "twitter_screenshot",
+      "mechanism_hint": "2 formatos fixos de execução visual (cinematográfico, caixinha de perguntas).",
+      "notable_technique": "caixinha_perguntas",
       "word_count": 260,
       "intelligent_entry": "corpus/entries/005_formatos-execucao-editor.json"
     },
